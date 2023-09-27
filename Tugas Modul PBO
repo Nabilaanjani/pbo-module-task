@@ -1,0 +1,99 @@
+using System;
+
+// Class Laptop
+public class Laptop
+{
+    public string Merk;
+    public string Tipe;
+
+    public Laptop(string merk, string tipe)
+    {
+        Merk = merk;
+        Tipe = tipe;
+    }
+
+    public void LaptopDinyalakan()
+    {
+        Console.WriteLine($"Laptop {Merk} {Tipe} menyala");
+    }
+
+    public void LaptopDimatikan()
+    {
+        Console.WriteLine($"Laptop {Merk} {Tipe} mati");
+    }
+
+    public void BermainGame()
+    {
+        Console.WriteLine($"Laptop {Merk} {Tipe} sedang memainkan game");
+    }
+
+    public virtual void Ngoding()
+    {
+        Console.WriteLine($"Ctak Ctak Ctak, error lagi!!");
+    }
+}
+
+// Class Vivobook
+public class Vivobook : Laptop
+{
+    public string Vga;
+    public string Processor;
+
+    public Vivobook(string merk, string tipe, string vga, string processor) : base(merk, tipe)
+    {
+        Vga = vga;
+        Processor = processor;
+    }
+}
+
+// Class IdeaPad
+public class IdeaPad : Laptop
+{
+    public string Vga;
+    public string Processor;
+
+    public IdeaPad(string merk, string tipe, string vga, string processor) : base(merk, tipe)
+    {
+        Vga = vga;
+        Processor = processor;
+    }
+}
+
+// Class Predator
+public class Predator : Laptop
+{
+    public string Vga;
+    public string Processor;
+
+    public Predator(string merk, string tipe, string vga, string processor) : base(merk, tipe)
+    {
+        Vga = vga;
+        Processor = processor;
+    }
+
+    public override void Ngoding()
+    {
+        Console.WriteLine($"Laptop {Merk} {Tipe} sedang coding dengan serius.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Buat objek laptop1 dengan Vivobook
+        Laptop laptop1 = new Vivobook("Asus", "VivoBook S15", "Nvidia", "Core i5");
+        laptop1.LaptopDinyalakan();
+        laptop1.BermainGame();
+
+        // Buat objek laptop2 dengan IdeaPad
+        Laptop laptop2 = new IdeaPad("Lenovo", "IdeaPad 5", "AMD", "Ryzen");
+        laptop2.LaptopDinyalakan();
+        laptop2.Ngoding();
+
+        // Buat objek predator dengan Predator
+        Laptop predator = new Predator("Acer", "Predator Helios 300", "AMD", "Core i7");
+        predator.LaptopDinyalakan();
+        predator.Ngoding();
+    }
+}
